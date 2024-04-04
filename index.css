@@ -45,6 +45,7 @@ h1 samp {
     position: absolute;
     top: 100px;
     right: 30px;
+    z-index: -1;
 }
 
 .console .head {
