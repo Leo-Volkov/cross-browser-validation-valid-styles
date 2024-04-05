@@ -1,9 +1,9 @@
 let v_rend = document.querySelector(`.v_rend`);
 v_rend.innerHTML = navigator.userAgent;
-// ......................
+
 
 let elemet = document.querySelector(`div`);
-let s_rend = document.querySelector(`.s_rend`);
+let s_rend = document.querySelector(`.s_rend`);   
 let h3 = document.querySelector(`h3`);
 
 document
@@ -11,40 +11,38 @@ document
     .addEventListener("click", function (evt) {
         let i = 0;
         let p = ``;
-        for (const index in elemet.style) {
-            p += `<li>${index}</li>`;
+        for (const e in elemet.style) {
+            p += `<li>${e}</li>`;
             i++;
         }
-        h3.innerHTML = `В браузере доступно ${i} ${getEnding(i)}`;
+        h3.innerHTML = `В браузере доступно ${i} ${generateOutput(i)}`;
         s_rend.innerHTML = p;
-
-        // console.log(`Успешнно всё работает, Молодец👍`);
     });
 
-document.querySelector(`.cut`).addEventListener("click", function (evt) {
-    let input = document.querySelector(".s_rend");
+document.querySelector(`.cut`)
+.addEventListener("click", function (evt) {
     navigator.clipboard.writeText(navigator.userAgent).catch((err) => {
         console.log("Скопировать в буфер не удалось", err);
     });
 });
 
 
-function getEnding(i) {
-    let ending;
-    const lastDigit = i % 10;
-  
-    switch (lastDigit) {
-      case 1:
-        ending = "свойство";
-        break;
-      case 2:
-      case 3:
-      case 4:
-        ending = "свойтва";
-        break;
-      default:
-        ending = "свойствa";
-    }
-  
-    return ending;
+
+
+
+function getSuffix(number) {
+  if (number === 1) {
+    return `о`
   }
+    if (number % 10 === 1 && number % 100 !== 11) {
+        return '';
+    } else if ([2, 3, 4].includes(number % 10) && ![12, 13, 14, 23].includes(number % 100)) {
+        return 'а';
+    } else {
+        return '';
+    }
+}
+
+function generateOutput(number) {
+    return ' свойств' + getSuffix(number);
+}
