@@ -71,7 +71,7 @@ h1 samp {
 
 .console .head .ckrukes {
     width: 46px;
-    height: 13px;
+    height: 11px;
 
     display: flex;
     justify-content: space-between;
@@ -79,7 +79,7 @@ h1 samp {
     align-items: center;
 
     position: absolute;
-    top: 3.5px;
+    top: 2.5px;
     left: 6.5px;
 }
 
